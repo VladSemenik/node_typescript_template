@@ -1,7 +1,10 @@
-import utils from './util'
-import vanile from './vanila'
+import { container } from "./inversify.config"
+import { User as IUser } from "./modules/user/interfaces"
+import { TYPES } from "./modules/types.inversify"
 
-console.log('hi from index.ts')
+const user = container.get<IUser>(TYPES.User)
 
-setInterval(utils, 2000)
-setInterval(vanile, 2000)
+user.read()
+user.write("inversify first project")
+
+console.log(user)
